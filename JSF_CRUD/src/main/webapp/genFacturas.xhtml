@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<meta charset="utf-8" name="viewport"
+		content="width=device-width, initial-scale=1"
+		http-equiv="X-UA-Conpatible" />
+	<title>Facturación Car Center</title>
+</h:head>
+<h:body>
+<h:messages errorStyle="color:red" infoStyle="color:green" globalOnly="true"></h:messages>
+	<h2>
+		<h:outputText value="Facturación"></h:outputText>
+	</h2>
+	<h:form id="formFactura">
+		<h:panelGrid id="gridBuscarDatosCliente" columns="3" border="1">
+		<h:outputLabel value="Cliente: "></h:outputLabel>
+			<h:selectOneMenu value="#{facturaBean.codigoCliente}" id="unCliente">
+				<f:selectItem itemLabel="-- Seleccione --" itemValue="-1"></f:selectItem>
+				<f:selectItems value="#{facturaBean.listaClientes}"></f:selectItems>
+			</h:selectOneMenu>
+			<h:commandButton value="Buscar" action="#{facturaBean.buscar}" style="width:100px; height:30px;"></h:commandButton>
+		</h:panelGrid>
+		<h:panelGrid  id="gridDatosCliente" columns="2" border="1">
+			<h:outputLabel value="Primer Nombre Cliente: "></h:outputLabel>
+			<h:outputLabel id="priNombre" value="#{facturaBean.primerNombreCliente}"></h:outputLabel>
+		    <h:outputLabel value="Primer Apellido Cliente: "></h:outputLabel>
+		    <h:outputLabel id="priApellido" value="#{facturaBean.primerApellidoCliente}"></h:outputLabel>
+		    
+		    
+		    <h:outputLabel value="Tipo Documento Mecánico: "></h:outputLabel>
+			<h:outputLabel id="tipoDoc" value="#{facturaBean.tipoDocMecanico}"></h:outputLabel>
+		    <h:outputLabel value="Número Documento Mecánico: "></h:outputLabel>
+		    <h:outputLabel id="docMec" value="#{facturaBean.numDocMecanico}"></h:outputLabel>
+		    <h:outputLabel value="Nombre Mecánico: "></h:outputLabel>
+			<h:outputLabel id="nomMec" value="#{facturaBean.primerNombreMecanico}"></h:outputLabel>
+		    <h:outputLabel value="Apellido Mecánico: "></h:outputLabel>
+		    <h:outputLabel id="priApellidoMec" value="#{facturaBean.primerApellidoMecanico}"></h:outputLabel>
+		</h:panelGrid>
+		<br/>
+		<br/>
+		
+		<h:dataTable id="tablaDetalleFactura" value="#{facturaBean.infoPrefactura}" var="reg" border="1">
+			<h:column>
+				<f:facet name="header">Producto o Servicio</f:facet>
+				<h:outputText value="#{reg.producto}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Cantidad Utilizada</f:facet>
+				<h:outputText value="#{reg.valCantidadUsada}"></h:outputText>
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Valor Unitario</f:facet>
+				<h:outputText value="#{reg.valorUnitarioProducto}"></h:outputText>
+			</h:column>			
+			<h:column>
+				<f:facet name="header">Valor Venta</f:facet>
+				<h:outputText value="#{reg.valorUnitarioProducto * reg.valCantidadUsada}"></h:outputText>
+			</h:column>
+		</h:dataTable>
+		
+		<h:panelGrid columns="2">
+		   <h:outputLabel value="Subtotal: " style="font-size:16px; font-weight: bold;"></h:outputLabel>
+		   <h:outputText value="#{facturaBean.subtotal}" style="font-size:16px; font-weight: bold;"></h:outputText>
+		   <h:outputLabel value="IVA: " style="font-size:16px; font-weight: bold;"></h:outputLabel>
+		   <h:outputText value="#{facturaBean.valorIVA}" style="font-size:16px; font-weight: bold;"></h:outputText>
+		   <h:outputLabel value="Total Factura: " style="font-size:16px; font-weight: bold;"></h:outputLabel>
+		   <h:outputText value="#{facturaBean.totalFactura}" style="font-size:16px; font-weight: bold;"></h:outputText>
+		</h:panelGrid>
+		
+		<br/><br/>
+		
+		<h:commandButton value="Registrar" action="#{facturaBean.guardarFactura}" style="width:100px; height:30px;"></h:commandButton>
+		 	
+		<h:commandButton action="menuPrincipal" value="Regresar" style="width:100px; height:30px;"></h:commandButton>
+	</h:form>
+</h:body>
+</html>

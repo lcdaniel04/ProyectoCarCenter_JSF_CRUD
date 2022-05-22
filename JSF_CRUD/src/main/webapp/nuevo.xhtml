@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://xmlns.jcp.org/jsf/core">	
+<h:head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" http-equiv="X-UA-Conpatible" />    
+    <title>Registrar cliente</title>
+</h:head>
+<h:body>
+    <h:form>
+		<h:panelGrid columns="2" columnClasses="25" border="1">
+		
+			<f:facet name="header">
+				<h:outputText value="Registrar Cliente"></h:outputText>
+			</f:facet>
+			
+			<h:outputText value="Primer Nombre"></h:outputText>
+			<h:inputText value="#{cliente.primerNombre}"></h:inputText>
+			<h:outputText value="Segundo Nombre"></h:outputText>
+			<h:inputText value="#{cliente.segundoNombre}"></h:inputText>
+			<h:outputText value="Primer Apellido"></h:outputText>
+			<h:inputText value="#{cliente.primerApellido}"></h:inputText>
+			<h:outputText value="Segundo Apellido"></h:outputText>
+			<h:inputText value="#{cliente.segundoApellido}"></h:inputText>
+			<h:outputText value="Tipo Documento"></h:outputText>
+			<h:inputText value="#{cliente.tipoDocumento}"></h:inputText>
+			<h:outputText value="Num. Documento"></h:outputText>
+			<h:inputText value="#{cliente.numDocumento}"></h:inputText>
+			<h:outputText value="Num. Celular"></h:outputText>
+			<h:inputText value="#{cliente.numCelular}"></h:inputText>
+			<h:outputText value="Dirección"></h:outputText>
+			<h:inputText value="#{cliente.direccion}"></h:inputText>
+			<h:outputText value="Correo Electrónico"></h:outputText>
+			<h:inputText value="#{cliente.correoElectronico}"></h:inputText>
+			
+			<f:facet name="footer">
+				<h:commandButton action="#{clienteBean.guardar(cliente)}" value="Guardar" style="width:100px; height:30px;"></h:commandButton>
+			</f:facet>
+			
+		</h:panelGrid>
+	</h:form>
+</h:body>
+</html>
